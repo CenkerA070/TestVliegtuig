@@ -3,46 +3,16 @@ import org.junit.Test;
 
 public class VliegtuigTest {
     private Vliegtuig vliegtuig = new Vliegtuig("b", "b", 0, 0, false);
-    private Vliegveld schiphol = new Vliegveld();
+    private Vliegveld schiphol = new Vliegveld(50, true, true);
 
     @Test
-    public void opstijgenTestMCDC00() {
-        // wij testen hierbij als alebei de condities 0 zijn
-        vliegtuig.setGewicht(1001);
-        schiphol.setTegenwind(49);
-
-        // ik verwacht dat het false wordt sinds de gewicht zwaarder is dan 1000 kg en de windsnelheid 40 is
-        Assert.assertFalse(schiphol.OpstijgToestemming(vliegtuig));
-    }
-
-    @Test
-    public void opstijgenTestMCDC01() {
-        // wij testen hierbij als alebei de eerste conditie false is en de tweede true is
-        vliegtuig.setGewicht(2000);
-        schiphol.setTegenwind(51);
-
-        // ik verwacht dat het true wordt sinds de gewicht zwaarder is dan 1000 kg maar de windkracht is wel sterker dan 50km/h
-        Assert.assertTrue(schiphol.OpstijgToestemming(vliegtuig));
-    }
-
-    @Test
-    public void opstijgenTestMCDC10() {
-        // wij testen hierbij als alleen de tweede conditie waar is
-        vliegtuig.setGewicht(900);
-        schiphol.setTegenwind(45);
-
-        // ik verwacht dat het true wordt sinds de gewicht minder zwaar is dan 1000 kg
-        Assert.assertTrue(schiphol.OpstijgToestemming(vliegtuig));
-    }
-
-    @Test
-    public void opstijgenTestMCDC11() {
-        // wij testen hierbij als alebei de condities 1 zijn
-        vliegtuig.setGewicht(500);
-        schiphol.setTegenwind(1225);
-
-        // ik verwacht dat het true wordt sinds de gewicht minder is dan 1000 kg en de windsnelheid mach 1 is
-        Assert.assertTrue(schiphol.OpstijgToestemming(vliegtuig));
+    public void opstijgenTest() {
+        // hierbij testen wij of de vliegtuig mag opstijgen of niet
+        Assert.assertFalse(schiphol.kanOpstijgen(true, 1001, 49));
+        Assert.assertTrue(schiphol.kanOpstijgen(true, 2000, 51));
+        Assert.assertFalse(schiphol.kanOpstijgen(false, 900, 45));
+        Assert.assertTrue(schiphol.kanOpstijgen(true, 500, 1250));
+        Assert.assertTrue(schiphol.kanOpstijgen(true, 750, 500));
     }
 
     @Test

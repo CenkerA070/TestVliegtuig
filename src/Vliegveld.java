@@ -12,12 +12,16 @@ public class Vliegveld {
         this.tegenwind = tegenwind;
     }
 
+    public Vliegveld(int tegenwind, boolean opstijgToestemming, boolean landToestemming) {
+        this.tegenwind = tegenwind;
+        this.opstijgToestemming = opstijgToestemming;
+        this.landToestemming = landToestemming;
+    }
 
-    public boolean OpstijgToestemming(Vliegtuig vliegtuig) {
-        if (vliegtuig.getGewicht() <= 1000 || getTegenwind() >= 50) {
+    public boolean kanOpstijgen(boolean opstijgToestemming, int gewicht, int tegenwind) {
+        if (opstijgToestemming && (gewicht < 1000 || tegenwind >= 50)) {
             return true;
-        }
-        return false;
+        } return false;
     }
 
     public boolean isLandToestemming() {
