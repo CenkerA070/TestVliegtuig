@@ -1,19 +1,16 @@
 public class Vliegtuig {
     private String merk;
-    private String merkNummer;
-    private String vliegtuig;
     private String land;
     private int passagiers;
     private int gewicht;
     private boolean bagage;
 
-
-    public void setVliegtuig(String vliegtuig) {
-        this.vliegtuig = getMerk() + getMerkNummer();
-    }
-
-    public String getVliegtuig() {
-        return vliegtuig;
+    public Vliegtuig(String merk, String land, int passagiers, int gewicht, boolean bagage) {
+        this.merk = merk;
+        this.land = land;
+        this.passagiers = passagiers;
+        this.gewicht = gewicht;
+        this.bagage = bagage;
     }
 
     public String getMerk() {
@@ -22,14 +19,6 @@ public class Vliegtuig {
 
     public void setMerk(String merk) {
         this.merk = merk;
-    }
-
-    public String getMerkNummer() {
-        return merkNummer;
-    }
-
-    public void setMerkNummer(String merkNummer) {
-        this.merkNummer = merkNummer;
     }
 
     public String getLand() {
