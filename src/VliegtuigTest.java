@@ -8,11 +8,14 @@ public class VliegtuigTest {
     @Test
     public void opstijgenTest() {
         // hierbij testen wij of de vliegtuig mag opstijgen of niet
-        Assert.assertFalse(schiphol.kanOpstijgen(true, 1001, 49));
-        Assert.assertTrue(schiphol.kanOpstijgen(true, 2000, 51));
-        Assert.assertFalse(schiphol.kanOpstijgen(false, 900, 45));
-        Assert.assertTrue(schiphol.kanOpstijgen(true, 500, 1250));
-        Assert.assertTrue(schiphol.kanOpstijgen(true, 750, 500));
+        Assert.assertTrue(schiphol.kanOpstijgen(true, 1001, 51));
+        Assert.assertFalse(schiphol.kanOpstijgen(false, 1100, 50));
+        Assert.assertTrue(schiphol.kanOpstijgen(true, 1000, 49));
+        Assert.assertFalse(schiphol.kanOpstijgen(false, 400, 10));
+        Assert.assertTrue(schiphol.kanOpstijgen(true, 300, 99));
+        Assert.assertFalse(schiphol.kanOpstijgen(false, 700, 50));
+        Assert.assertFalse(schiphol.kanOpstijgen(true, 1500, 25));
+        Assert.assertFalse(schiphol.kanOpstijgen(false, 1010, 1));
     }
 
     @Test
@@ -20,14 +23,14 @@ public class VliegtuigTest {
         // hierbij testen wij de prijzen met alleen de gewichten van de lading
         schiphol.setLandToestemming(true);
 
-        Vliegtuig v1 = new Vliegtuig("b", "b", 0, 900, false);
-        Vliegtuig v2 = new Vliegtuig("b", "b", 0, 2500, false);
-        Vliegtuig v3 = new Vliegtuig("b", "b", 0, 7000, false);
-        Vliegtuig v4 = new Vliegtuig("b", "b", 0, 1700, false);
-        Vliegtuig v5 = new Vliegtuig("b", "b", 0, 402, false);
-        Vliegtuig v6 = new Vliegtuig("b", "b", 0, 4999, false);
-        Vliegtuig v7 = new Vliegtuig("b", "b", 0, 1000, false);
-        Vliegtuig v8 = new Vliegtuig("b", "b", 0, 10000, false);
+        Vliegtuig v1 = new Vliegtuig("b", "b", 0, 1000, false);
+        Vliegtuig v2 = new Vliegtuig("b", "b", 0, 4999, false);
+        Vliegtuig v3 = new Vliegtuig("b", "b", 0, 5000, false);
+        Vliegtuig v4 = new Vliegtuig("b", "b", 0, 1001, false);
+        Vliegtuig v5 = new Vliegtuig("b", "b", 0, 999, false);
+        Vliegtuig v6 = new Vliegtuig("b", "b", 0, 4999.99, false);
+        Vliegtuig v7 = new Vliegtuig("b", "b", 0, 999.99, false);
+        Vliegtuig v8 = new Vliegtuig("b", "b", 0, 5000.1, false);
 
 
         Assert.assertEquals(100, schiphol.landPrijs(v1), 0.001);

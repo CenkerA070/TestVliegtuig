@@ -19,7 +19,7 @@ public class Vliegveld {
     }
 
     public boolean kanOpstijgen(boolean opstijgToestemming, int gewicht, int tegenwind) {
-        if (opstijgToestemming && (gewicht < 1000 || tegenwind >= 50)) {
+        if (opstijgToestemming && (gewicht <= 1000 || tegenwind >= 50)) {
             return true;
         } return false;
     }
@@ -37,9 +37,9 @@ public class Vliegveld {
 
         if (landToestemming && vliegtuig.getGewicht() <= 1000) {
             totaalprijs += 100;
-        } else if (landToestemming && vliegtuig.getGewicht() > 1000 && vliegtuig.getGewicht() <= 5000) {
+        } else if (landToestemming && vliegtuig.getGewicht() > 1000 && vliegtuig.getGewicht() < 5000) {
             totaalprijs += 500;
-        } else if (landToestemming && vliegtuig.getGewicht() > 5000) {
+        } else if (landToestemming && vliegtuig.getGewicht() >= 5000) {
             totaalprijs += 2500;
         }
 
@@ -47,12 +47,12 @@ public class Vliegveld {
             totaalprijs *= 1.5;
         }
 
-        if (vliegtuig.getLand().equals("Nederland") || vliegtuig.getLand().equals("NL")) {
-            totaalprijs *= 1.21;
+        if (vliegtuig.isBagage()) {
+            return totaalprijs += 800.0;
         }
 
-        if (vliegtuig.isBagage() && landToestemming) {
-            return totaalprijs += 800.0;
+        if (vliegtuig.getLand().equals("Nederland") || vliegtuig.getLand().equals("NL")) {
+            totaalprijs *= 1.21;
         }
 
         return totaalprijs;

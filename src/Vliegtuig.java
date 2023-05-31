@@ -2,10 +2,10 @@ public class Vliegtuig {
     private String merk;
     private String land;
     private int passagiers;
-    private int gewicht;
+    private double gewicht;
     private boolean bagage;
 
-    public Vliegtuig(String merk, String land, int passagiers, int gewicht, boolean bagage) {
+    public Vliegtuig(String merk, String land, int passagiers, double gewicht, boolean bagage) {
         this.merk = merk;
         this.land = land;
         this.passagiers = passagiers;
@@ -29,11 +29,11 @@ public class Vliegtuig {
         this.land = land;
     }
 
-    public int getGewicht() {
+    public double getGewicht() {
         return gewicht;
     }
 
-    public void setGewicht(int gewicht) {
+    public void setGewicht(double gewicht) {
         this.gewicht = gewicht;
     }
 
